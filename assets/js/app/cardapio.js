@@ -1,9 +1,4 @@
-/**
- * Canal APP — tela de cardápio.
- *
- * fluxo do cardapio: escolher unidade -> ver cardápio daquela unidade -> montar
- * carrinho. A tela se redesenha inteira a cada mudança de estado
- * (`renderizar`).**/
+// tela de cardápio do app
 
 import { UNIDADES, buscarUnidade, estaAberta } from "../data/unidades.js";
 import { CATEGORIAS, CAMPANHAS, buscarProduto, cardapioDaUnidade } from "../data/cardapio.js";
@@ -13,12 +8,14 @@ import { reais, duracao, plural, escapar, iniciais } from "../core/format.js";
 
 let categoriaAtiva = "todas";
 
-//inicia func
+// inicialização
+
 function iniciar() {
   store.carregar();
   store.definirCanal("app");
   iniciarLgpd();
 
+  // valida unidade salva
   const salva = store.obterEstado().unidadeId;
   if (!salva || !buscarUnidade(salva)) {
     store.definirUnidade(UNIDADES.find((u) => u.fundadora).id);
@@ -28,6 +25,8 @@ function iniciar() {
   document.addEventListener("click", tratarClique);
   renderizar();
 }
+
+// delegação de eventos
 
 function tratarClique(evento) {
   const alvo = evento.target.closest("[data-acao]");
@@ -57,13 +56,14 @@ function tratarClique(evento) {
       store.adicionarAoCarrinho({ produtoId: valor });
       break;
     case "ir-carrinho":
-      // Próxima etapa do fluxo — implementada na tela de carrinho.
       window.location.href = "carrinho.html";
       break;
   }
 }
-//campanhas ativas nas unidades
 
+// campanhas
+
+// campanhas válidas agora
 function campanhasAtivas(unidade, agora = new Date()) {
   return CAMPANHAS.filter((c) => {
     if (c.unidades && !c.unidades.includes(unidade.id)) return false;
@@ -73,7 +73,7 @@ function campanhasAtivas(unidade, agora = new Date()) {
   });
 }
 
-// descontos para produtos
+// desconto em centavos
 function descontoDoProduto(produtoId, campanhas) {
   const campanha = campanhas.find(
     (c) => c.tipo === "desconto-percentual" && c.itens.includes(produtoId)
@@ -82,6 +82,8 @@ function descontoDoProduto(produtoId, campanhas) {
   const produto = buscarProduto(produtoId);
   return Math.round((produto.preco * campanha.percentual) / 100);
 }
+
+// renderização
 
 function renderizar() {
   const estado = store.obterEstado();
@@ -194,8 +196,7 @@ function cartaoProduto(produto, campanhas) {
        <span class="selo selo--promo">-${Math.round((desconto / produto.preco) * 100)}%</span>`
     : `<span class="produto__preco">${reais(produto.preco)}</span>`;
 
-  // item esgotado continua visível, mas desabilitado.
-
+  // esgotado fica visível e inoperante
   const selos = [
     produto.sazonalAgora
       ? `<span class="selo selo--sazonal">${escapar(produto.sazonal.rotulo)}</span>`
@@ -247,7 +248,7 @@ function barraCarrinho(estado, campanhas) {
   `;
 }
 
-// selecionar unidade 
+// folha de unidades
 
 function renderizarFolha(unidadeAtualId) {
   const folha = document.getElementById("folha-unidades");
@@ -296,8 +297,6 @@ function abrirFolha() {
 function fecharFolha() {
   document.getElementById("folha-unidades").hidden = true;
 }
-
-// quando troca a unidade o carrinho zera
 
 document.addEventListener("keydown", (evento) => {
   if (evento.key === "Escape") fecharFolha();

@@ -1,17 +1,14 @@
-/* ============================================================
-    APP — mobile-first.
-    tela pequena
-   ============================================================ */
+/* canal app, mobile-first */
 
 .app {
   max-width: var(--largura-app);
   margin: 0 auto;
   min-height: 100vh;
   background: var(--papel);
-  padding-bottom: 96px; /* espaço para a barra de carrinho fixa */
+  padding-bottom: 96px; /* barra fixa */
 }
 
-/* header de seletor de unidade */
+/* cabeçalho */
 
 .app-cabecalho {
   position: sticky;
@@ -49,7 +46,7 @@
   font-weight: 600;
 }
 
-/* selecionar unidade (primeiro step do fluxo) */
+/* seletor de unidade */
 .seletor-unidade {
   display: flex;
   align-items: center;
@@ -119,7 +116,7 @@
   color: rgba(255, 255, 255, 0.86);
 }
 
-/* categorias */
+/* filtros */
 
 .filtros {
   display: flex;
@@ -156,7 +153,7 @@
   color: var(--papel);
 }
 
-/* lista do cardapio */
+/* cardápio */
 
 .cardapio {
   padding: 0 var(--esp-4);
@@ -188,6 +185,21 @@
 
 .produto:last-child {
   border-bottom: 0;
+}
+
+/* esgotado */
+.produto:disabled {
+  cursor: not-allowed;
+}
+
+.produto:disabled .miniatura {
+  filter: grayscale(1);
+  opacity: 0.5;
+}
+
+.produto:disabled .produto__nome,
+.produto:disabled .produto__descricao {
+  color: var(--pedra);
 }
 
 .produto .miniatura {
@@ -246,7 +258,7 @@
   margin-bottom: var(--esp-2);
 }
 
-/* barra do carrinho fixada */
+/* barra carrinho */
 
 .barra-carrinho {
   position: fixed;
@@ -276,7 +288,7 @@
   font-weight: 500;
 }
 
-/* escolher unidade */
+/* bottom sheet */
 
 .folha {
   position: fixed;

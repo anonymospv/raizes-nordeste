@@ -1,4 +1,4 @@
-/* hub do app */
+/* seletor de canal */
 
 .hub {
   min-height: 100vh;
@@ -12,7 +12,7 @@
   margin: 0 auto;
 }
 
-/* ---- Cabeçalho ---- */
+/* cabeçalho */
 
 .hub__marca {
   display: flex;
@@ -33,7 +33,7 @@
   font-weight: 600;
 }
 
-
+/* chamada */
 
 .hub__chamada {
   max-width: 34ch;
@@ -52,7 +52,7 @@
   font-size: var(--txt-lg);
 }
 
-
+/* grade */
 
 .canais {
   display: grid;
@@ -109,7 +109,7 @@
   color: var(--cajuina);
 }
 
-/* molduras para os tipos de tela*/
+/* molduras de dispositivo */
 
 .dispositivo {
   background: var(--papel);
@@ -130,7 +130,7 @@
   height: 190px;
   border-radius: 6px;
   border: 6px solid #050a20;
-  border-bottom-width: 18px; /* base do gabinete */
+  border-bottom-width: 18px; /* gabinete */
 }
 
 .dispositivo--desktop {
@@ -140,7 +140,7 @@
   border: 4px solid #050a20;
 }
 
-/* conteudo das molduras */
+/* conteúdo esquemático */
 
 .tela {
   height: 100%;
@@ -230,7 +230,7 @@
   border-radius: 2px;
 }
 
-/* footer */
+/* rodapé */
 
 .hub__rodape {
   margin-top: var(--esp-8);

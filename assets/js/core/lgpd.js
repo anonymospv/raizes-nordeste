@@ -1,8 +1,4 @@
-/**
- * componente de consentimento LGPD.
- * banner + preferencias
- 
- */
+// banner e painel de privacidade
 
 import {
   CATEGORIAS_DADOS,
@@ -24,7 +20,7 @@ export function iniciarLgpd() {
     banner.hidden = false;
   }
 
-  
+  // abre pelo rodapé
   document.addEventListener("click", (evento) => {
     const gatilho = evento.target.closest("[data-abrir-privacidade]");
     if (gatilho) {
@@ -34,7 +30,7 @@ export function iniciarLgpd() {
   });
 }
 
-/* banner */
+// banner
 
 function montarBanner() {
   banner = document.createElement("aside");
@@ -83,7 +79,7 @@ function fecharBanner() {
   banner.hidden = true;
 }
 
-/* painel de preferencias */
+// painel
 
 function montarModal() {
   modal = document.createElement("div");
@@ -137,7 +133,7 @@ function montarModal() {
   document.body.appendChild(modal);
 
   modal.addEventListener("click", (evento) => {
-    if (evento.target === modal) return fecharModal(); // clique fora
+    if (evento.target === modal) return fecharModal();
     const acao = evento.target.closest("[data-lgpd]")?.dataset.lgpd;
     if (acao === "salvar") {
       salvarConsentimento({
@@ -177,7 +173,7 @@ function fecharModal() {
   focoAnterior?.focus();
 }
 
-/*anuncio  */
+// aria-live
 
 function anunciar(mensagem) {
   let regiao = document.getElementById("anuncio-vivo");

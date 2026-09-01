@@ -1,9 +1,9 @@
-
+// estado global
 
 const CHAVE_ESTADO = "rrn:estado";
 const CHAVE_CONSENTIMENTO = "rrn:consentimento";
 
-/** Categorias de tratamento apresentadas ao titular no banner. */
+// categorias do banner
 export const CATEGORIAS_DADOS = {
   essenciais: {
     rotulo: "Essenciais",
@@ -27,17 +27,17 @@ export const CATEGORIAS_DADOS = {
 
 const ESTADO_INICIAL = {
   unidadeId: null,
-  canal: null, // "app" | "totem" | "web"
-  carrinho: [], // { linhaId, produtoId, quantidade, opcoes:{}, observacao }
-  usuario: null, // { nome, email, pontos } — null = visitante
+  canal: null,
+  carrinho: [],
+  usuario: null,
   pedidos: [],
 };
 
 let estado = { ...ESTADO_INICIAL };
-let consentimento = null; // null = titular ainda não decidiu
+let consentimento = null;
 const ouvintes = new Set();
 
-/* consentimento */
+// consentimento
 
 export function lerConsentimento() {
   if (consentimento) return consentimento;
@@ -45,7 +45,7 @@ export function lerConsentimento() {
     const bruto = localStorage.getItem(CHAVE_CONSENTIMENTO);
     consentimento = bruto ? JSON.parse(bruto) : null;
   } catch {
-    consentimento = null; // storage bloqueado: segue como visitante
+    consentimento = null;
   }
   return consentimento;
 }
@@ -54,13 +54,10 @@ export function precisaDecidirConsentimento() {
   return lerConsentimento() === null;
 }
 
-/**
- * registra a decisao
- * @param {{personalizacao:boolean, marketing:boolean}} escolhas
- */
+// grava decisão
 export function salvarConsentimento(escolhas) {
   consentimento = {
-    essenciais: true, // não é opcional e o banner deixa isso explícito
+    essenciais: true,
     personalizacao: Boolean(escolhas.personalizacao),
     marketing: Boolean(escolhas.marketing),
     versaoAviso: "1.0",
@@ -69,9 +66,9 @@ export function salvarConsentimento(escolhas) {
   try {
     localStorage.setItem(CHAVE_CONSENTIMENTO, JSON.stringify(consentimento));
   } catch {
-    /* sem storage: a decisão vale só para esta sessão */
+    // só nesta sessão
   }
-  // revogar personalização
+  // revogar apaga histórico
   if (!consentimento.personalizacao) {
     estado.pedidos = [];
     gravar();
@@ -85,7 +82,7 @@ export function revogarConsentimento() {
     localStorage.removeItem(CHAVE_CONSENTIMENTO);
     localStorage.removeItem(CHAVE_ESTADO);
   } catch {
-    /* nada a fazer */
+    // ignora
   }
   consentimento = null;
   estado = { ...ESTADO_INICIAL, carrinho: [] };
@@ -98,7 +95,7 @@ function permitido(categoria) {
   return Boolean(c && c[categoria]);
 }
 
-/* persist */
+// persistência
 
 function gravar() {
   const paraGravar = {
@@ -112,7 +109,7 @@ function gravar() {
   try {
     localStorage.setItem(CHAVE_ESTADO, JSON.stringify(paraGravar));
   } catch {
-    /* modo privado ou storage cheio: a sessão continua em memória */
+    // segue em memória
   }
 }
 
@@ -126,7 +123,7 @@ export function carregar() {
   return estado;
 }
 
-/* leitura e escrita de estado */
+// leitura e escrita
 
 export function obterEstado() {
   return estado;
@@ -134,7 +131,7 @@ export function obterEstado() {
 
 export function assinar(ouvinte) {
   ouvintes.add(ouvinte);
-  return () => ouvintes.delete(ouvinte); // função de cancelamento
+  return () => ouvintes.delete(ouvinte);
 }
 
 function notificar() {
@@ -143,7 +140,7 @@ function notificar() {
 
 export function definirUnidade(unidadeId) {
   if (estado.unidadeId === unidadeId) return;
-  // trocar unidade (cardapio unico por loja)
+  // troca de loja zera carrinho
   estado.unidadeId = unidadeId;
   estado.carrinho = [];
   gravar();
@@ -154,12 +151,12 @@ export function definirCanal(canal) {
   estado.canal = canal;
 }
 
-/* ---- Carrinho ---- */
+// carrinho
 
 let contadorLinha = 0;
 
 export function adicionarAoCarrinho({ produtoId, quantidade = 1, opcoes = {}, observacao = "" }) {
-  
+  // agrupa linha idêntica
   const assinatura = JSON.stringify(opcoes);
   const existente = estado.carrinho.find(
     (l) =>
@@ -200,7 +197,7 @@ export function esvaziarCarrinho() {
   notificar();
 }
 
-/** reinicia a sessao atual no totem */
+// limpa sessão do totem
 export function encerrarSessaoTotem() {
   estado.carrinho = [];
   estado.usuario = null;

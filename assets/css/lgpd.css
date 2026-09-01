@@ -1,7 +1,4 @@
-/* 
-   LGPD — banner de consentimento e painel de preferências.
-   Compartilhado por App, Totem e Painel. (obrigatorio formulario sim ou não)
- */
+/* consentimento lgpd */
 
 .lgpd-banner {
   position: fixed;
@@ -55,7 +52,7 @@
   color: var(--cajuina);
 }
 
-/* painel de preferencias */
+/* modal preferências */
 
 .lgpd-modal {
   position: fixed;
@@ -123,7 +120,7 @@
   color: var(--pedra);
 }
 
-/* Interruptor */
+/* interruptor */
 
 .interruptor {
   position: relative;

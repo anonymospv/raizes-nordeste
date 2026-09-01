@@ -1,4 +1,4 @@
-/* base do app (css geral) */
+/* reset e compartilhados */
 
 *,
 *::before,
@@ -33,7 +33,7 @@ h4 {
 
 p {
   margin: 0;
-  max-width: 68ch; /* conforto de leitura */
+  max-width: 68ch;
 }
 
 img,
@@ -61,14 +61,14 @@ a {
   color: var(--anil-500);
 }
 
-/* foco visivel pra teste de navegação */
+/* foco visível */
 :focus-visible {
   outline: 3px solid var(--cajuina);
   outline-offset: 2px;
   border-radius: var(--raio-sm);
 }
 
-/*leitor de tela*/
+/* leitor de tela */
 .sr-apenas {
   position: absolute;
   width: 1px;
@@ -81,7 +81,7 @@ a {
   border: 0;
 }
 
-/* btns */
+/* botões */
 
 .btn {
   display: inline-flex;
@@ -136,7 +136,7 @@ a {
   width: 100%;
 }
 
-/* promoçao (selo, fidelidade etc) */
+/* selos */
 
 .selo {
   display: inline-flex;
@@ -164,12 +164,17 @@ a {
   color: var(--sucesso);
 }
 
+.selo--sazonal {
+  background: var(--anil-500);
+  color: var(--branco);
+}
+
 .selo--neutro {
   background: var(--pedra-clara);
   color: var(--tinta);
 }
 
-/* miniatura do item (apenas mock) */
+/* miniatura: monograma por categoria */
 
 .miniatura {
   display: grid;
@@ -182,6 +187,10 @@ a {
   font-weight: 700;
   letter-spacing: -0.02em;
   user-select: none;
+}
+
+.miniatura[data-categoria="cafe-manha"] {
+  background: #7a4c00;
 }
 
 .miniatura[data-categoria="salgados"] {
@@ -197,7 +206,7 @@ a {
   background: #1a6b6b;
 }
 
-/* movimento */
+/* movimento reduzido */
 
 @media (prefers-reduced-motion: reduce) {
   *,

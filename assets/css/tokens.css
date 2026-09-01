@@ -1,0 +1,67 @@
+/* design tokens */
+
+:root {
+  /* marca */
+  --anil-900: #101c4a;
+  --anil-700: #1d2f74;
+  --anil-500: #2b3f8f; /* interativo secundário, foco */
+  --cajuina: #f0a11b;
+  --cajuina-escuro: #c47f0c;
+  --urucum: #c43b22;
+
+  /* superfícies */
+  --papel: #fcfaf6;
+  --papel-fundo: #f2eee6;
+  --tinta: #14161f;
+  --pedra: #5f6371;
+  --pedra-clara: #d9d5cc;
+  --branco: #ffffff;
+
+  /* estados */
+  --sucesso: #14713f;
+  --sucesso-fundo: #e3f2e8;
+  --atencao-fundo: #fdf0d5;
+  --erro-fundo: #fbe6e2;
+
+  /* tipografia */
+  --fonte-titulo: "Bricolage Grotesque", Georgia, serif;
+  --fonte-texto: "Instrument Sans", system-ui, -apple-system, sans-serif;
+
+  /* escala 1.25 */
+  --txt-xs: 0.75rem;
+  --txt-sm: 0.875rem;
+  --txt-base: 1rem;
+  --txt-lg: 1.25rem;
+  --txt-xl: 1.5625rem;
+  --txt-2xl: 1.953rem;
+  --txt-3xl: 2.441rem;
+  --txt-4xl: 3.052rem;
+
+  /* espaçamento */
+  --esp-1: 0.25rem;
+  --esp-2: 0.5rem;
+  --esp-3: 0.75rem;
+  --esp-4: 1rem;
+  --esp-5: 1.5rem;
+  --esp-6: 2rem;
+  --esp-7: 3rem;
+  --esp-8: 4rem;
+
+  /* raios */
+  --raio-sm: 6px;
+  --raio-md: 12px;
+  --raio-lg: 20px;
+  --raio-total: 999px;
+
+  /* sombras */
+  --sombra-flutuante: 0 4px 16px rgba(16, 28, 74, 0.12);
+  --sombra-modal: 0 16px 48px rgba(16, 28, 74, 0.24);
+
+  /* alvos de toque */
+  --toque-min: 44px; /* wcag 2.5.5 */
+  --toque-totem: 72px;
+
+  /* layout */
+  --largura-app: 480px;
+  --largura-conteudo: 1200px;
+}
