@@ -1,0 +1,382 @@
+/* telas de fluxo */
+
+.tela-fluxo {
+  max-width: var(--largura-app);
+  margin: 0 auto;
+  min-height: 100vh;
+  background: var(--papel);
+  padding-bottom: 120px;
+}
+
+/* topo com voltar */
+
+.topo {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  gap: var(--esp-3);
+  padding: var(--esp-3) var(--esp-4);
+  background: var(--anil-900);
+  color: var(--papel);
+}
+
+.topo h1 {
+  font-size: var(--txt-lg);
+  color: var(--papel);
+}
+
+.topo__voltar {
+  display: grid;
+  place-items: center;
+  min-width: var(--toque-min);
+  min-height: var(--toque-min);
+  border: 0;
+  border-radius: var(--raio-total);
+  background: rgba(252, 250, 246, 0.1);
+  color: var(--papel);
+  font-size: var(--txt-lg);
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.conteudo {
+  padding: var(--esp-4);
+}
+
+/* linha do carrinho */
+
+.linha {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: var(--esp-2) var(--esp-4);
+  padding: var(--esp-4) 0;
+  border-bottom: 1px solid var(--pedra-clara);
+}
+
+.linha__nome {
+  font-weight: 600;
+}
+
+.linha__opcoes {
+  grid-column: 1 / -1;
+  font-size: var(--txt-sm);
+  color: var(--pedra);
+}
+
+.linha__subtotal {
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.linha--alerta {
+  border-left: 3px solid var(--urucum);
+  padding-left: var(--esp-3);
+}
+
+/* controle de quantidade */
+
+.quantidade {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  gap: var(--esp-2);
+  margin-top: var(--esp-2);
+}
+
+.quantidade button {
+  width: var(--toque-min);
+  height: var(--toque-min);
+  border: 1px solid var(--pedra-clara);
+  border-radius: var(--raio-total);
+  background: var(--branco);
+  font-size: var(--txt-lg);
+  line-height: 1;
+  cursor: pointer;
+}
+
+.quantidade button:hover {
+  border-color: var(--anil-500);
+}
+
+.quantidade output {
+  min-width: 2.5ch;
+  text-align: center;
+  font-weight: 600;
+}
+
+/* resumo de valores */
+
+.resumo {
+  margin-top: var(--esp-5);
+  padding: var(--esp-4);
+  border-radius: var(--raio-md);
+  background: var(--papel-fundo);
+}
+
+.resumo__linha {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--esp-4);
+  padding: var(--esp-2) 0;
+  font-size: var(--txt-sm);
+}
+
+.resumo__linha--total {
+  border-top: 1px solid var(--pedra-clara);
+  margin-top: var(--esp-2);
+  padding-top: var(--esp-3);
+  font-size: var(--txt-lg);
+  font-weight: 600;
+}
+
+.resumo__economia {
+  color: var(--sucesso);
+}
+
+/* barra de ação fixa */
+
+.barra-acao {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: var(--largura-app);
+  z-index: 30;
+  display: flex;
+  flex-direction: column;
+  gap: var(--esp-2);
+  padding: var(--esp-3) var(--esp-4) var(--esp-4);
+  background: var(--papel);
+  border-top: 1px solid var(--pedra-clara);
+}
+
+/* aviso */
+
+.aviso {
+  display: flex;
+  gap: var(--esp-3);
+  padding: var(--esp-4);
+  margin-bottom: var(--esp-4);
+  border-radius: var(--raio-md);
+  font-size: var(--txt-sm);
+}
+
+.aviso--atencao {
+  background: var(--atencao-fundo);
+  color: #7a4c00;
+}
+
+.aviso--erro {
+  background: var(--erro-fundo);
+  color: var(--urucum);
+}
+
+.aviso--info {
+  background: var(--papel-fundo);
+  color: var(--pedra);
+}
+
+.aviso strong {
+  display: block;
+  margin-bottom: var(--esp-1);
+}
+
+/* formulário */
+
+.campo {
+  display: block;
+  margin-bottom: var(--esp-4);
+}
+
+.campo__rotulo {
+  display: block;
+  font-size: var(--txt-sm);
+  font-weight: 500;
+  margin-bottom: var(--esp-2);
+}
+
+.campo input {
+  width: 100%;
+  min-height: var(--toque-min);
+  padding: var(--esp-3);
+  border: 1px solid var(--pedra-clara);
+  border-radius: var(--raio-md);
+  background: var(--branco);
+}
+
+.campo input:focus {
+  border-color: var(--anil-500);
+}
+
+.campo input[aria-invalid="true"] {
+  border-color: var(--urucum);
+  border-width: 2px;
+}
+
+.campo__erro {
+  display: block;
+  margin-top: var(--esp-2);
+  font-size: var(--txt-sm);
+  color: var(--urucum);
+}
+
+.campo__erro:empty {
+  display: none;
+}
+
+/* escolha de método */
+
+.metodos {
+  display: grid;
+  gap: var(--esp-3);
+  margin-bottom: var(--esp-5);
+}
+
+.metodo {
+  display: flex;
+  align-items: center;
+  gap: var(--esp-3);
+  padding: var(--esp-4);
+  border: 1px solid var(--pedra-clara);
+  border-radius: var(--raio-md);
+  background: var(--branco);
+  cursor: pointer;
+  text-align: left;
+  min-height: var(--toque-min);
+}
+
+.metodo[aria-pressed="true"] {
+  border-color: var(--anil-900);
+  border-width: 2px;
+  background: var(--papel-fundo);
+}
+
+/* estados do pagamento */
+
+.pagamento-estado {
+  display: grid;
+  gap: var(--esp-4);
+  place-items: center;
+  padding: var(--esp-8) var(--esp-4);
+  text-align: center;
+}
+
+.pagamento-estado h2 {
+  font-size: var(--txt-2xl);
+}
+
+.girador {
+  width: 48px;
+  height: 48px;
+  border: 4px solid var(--pedra-clara);
+  border-top-color: var(--cajuina);
+  border-radius: 50%;
+  animation: girar 0.9s linear infinite;
+}
+
+@keyframes girar {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.marca-estado {
+  display: grid;
+  place-items: center;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  font-size: var(--txt-2xl);
+  color: var(--branco);
+}
+
+.marca-estado--ok {
+  background: var(--sucesso);
+}
+
+.marca-estado--erro {
+  background: var(--urucum);
+}
+
+/* acompanhamento do pedido */
+
+.senha {
+  text-align: center;
+  padding: var(--esp-6) var(--esp-4);
+  background: var(--anil-900);
+  color: var(--papel);
+}
+
+.senha__rotulo {
+  font-size: var(--txt-sm);
+  color: rgba(252, 250, 246, 0.7);
+}
+
+.senha__valor {
+  font-family: var(--fonte-titulo);
+  font-size: var(--txt-4xl);
+  font-weight: 700;
+  color: var(--cajuina);
+  letter-spacing: 0.05em;
+}
+
+.etapas {
+  padding: var(--esp-5) var(--esp-4);
+}
+
+.etapa {
+  display: grid;
+  grid-template-columns: 32px 1fr;
+  gap: var(--esp-4);
+  padding-bottom: var(--esp-5);
+  position: relative;
+}
+
+.etapa:not(:last-child)::before {
+  content: "";
+  position: absolute;
+  left: 15px;
+  top: 32px;
+  bottom: 0;
+  width: 2px;
+  background: var(--pedra-clara);
+}
+
+.etapa__marca {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--pedra-clara);
+  color: var(--pedra);
+  font-size: var(--txt-sm);
+  font-weight: 600;
+  z-index: 1;
+}
+
+.etapa[data-feita="true"] .etapa__marca {
+  background: var(--sucesso);
+  color: var(--branco);
+}
+
+.etapa[data-atual="true"] .etapa__marca {
+  background: var(--cajuina);
+  color: var(--anil-900);
+}
+
+.etapa__titulo {
+  font-weight: 600;
+}
+
+.etapa[data-feita="false"][data-atual="false"] .etapa__titulo {
+  color: var(--pedra);
+}
+
+.etapa__hora {
+  font-size: var(--txt-sm);
+  color: var(--pedra);
+}

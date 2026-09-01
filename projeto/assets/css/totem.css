@@ -1,0 +1,79 @@
+/* canal totem: mesma tela, régua maior */
+
+body[data-canal="totem"] .app,
+body[data-canal="totem"] .tela-fluxo {
+  max-width: 900px;
+  font-size: 1.25rem;
+}
+
+body[data-canal="totem"] .btn,
+body[data-canal="totem"] .filtro,
+body[data-canal="totem"] .metodo,
+body[data-canal="totem"] .quantidade button {
+  min-height: var(--toque-totem);
+  font-size: var(--txt-lg);
+}
+
+body[data-canal="totem"] .produto {
+  grid-template-columns: 120px 1fr;
+  padding: var(--esp-5) 0;
+}
+
+body[data-canal="totem"] .produto .miniatura {
+  width: 120px;
+  height: 120px;
+  font-size: var(--txt-2xl);
+}
+
+body[data-canal="totem"] .produto__nome {
+  font-size: var(--txt-xl);
+}
+
+body[data-canal="totem"] .produto__descricao {
+  font-size: var(--txt-base);
+}
+
+body[data-canal="totem"] .cardapio__titulo {
+  font-size: var(--txt-2xl);
+}
+
+body[data-canal="totem"] .senha__valor {
+  font-size: 5rem;
+}
+
+/* aviso de sessão prestes a expirar */
+
+.inatividade {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  display: grid;
+  place-items: center;
+  background: rgba(16, 28, 74, 0.9);
+  color: var(--papel);
+  text-align: center;
+  padding: var(--esp-6);
+}
+
+.inatividade[hidden] {
+  display: none;
+}
+
+.inatividade h2 {
+  font-size: var(--txt-3xl);
+  color: var(--papel);
+  margin-bottom: var(--esp-4);
+}
+
+.inatividade p {
+  margin: 0 auto var(--esp-6);
+  color: rgba(252, 250, 246, 0.8);
+}
+
+.inatividade__contagem {
+  font-family: var(--fonte-titulo);
+  font-size: var(--txt-4xl);
+  color: var(--cajuina);
+  display: block;
+  margin-bottom: var(--esp-5);
+}
