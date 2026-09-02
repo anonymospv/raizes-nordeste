@@ -3,109 +3,25 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Rede Raízes do Nordeste — Escolha o canal</title>
-    <meta
-      name="description"
-      content="Protótipo funcional dos três canais de atendimento da Rede Raízes do Nordeste: aplicativo, totem de autoatendimento e painel web."
-    />
+    <title>Painel — Raízes do Nordeste</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&family=Instrument+Sans:wght@400;500;600&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="assets/css/tokens.css" />
-    <link rel="stylesheet" href="assets/css/base.css" />
-    <link rel="stylesheet" href="assets/css/hub.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../assets/css/tokens.css" />
+    <link rel="stylesheet" href="../assets/css/base.css" />
+    <link rel="stylesheet" href="../assets/css/painel.css" />
   </head>
-  <body>
-    <main class="hub">
-      <div class="hub__interno">
-        <header class="hub__marca">
-          <h1>Raízes do Nordeste</h1>
-          <span>Protótipo funcional</span>
-        </header>
-
-        <div class="hub__chamada">
-          <h2>Um pedido, três balcões.</h2>
-        </div>
-        <p class="hub__apoio">
-          O mesmo cardápio, o mesmo carrinho e o mesmo fluxo de pagamento,
-          desenhados para três contextos de uso diferentes. Escolha por onde
-          entrar.
-        </p>
-
-        <nav class="canais" aria-label="Canais de atendimento">
-          <a class="canal" href="app/">
-            <div class="canal__moldura">
-              <div class="dispositivo dispositivo--celular">
-                <div class="tela">
-                  <div class="tela__barra"></div>
-                  <div class="tela__linha tela__linha--curta"></div>
-                  <div class="tela__cartao"><i></i><span></span></div>
-                  <div class="tela__cartao"><i></i><span></span></div>
-                  <div class="tela__cartao"><i></i><span></span></div>
-                  <div class="tela__acao"></div>
-                </div>
-              </div>
-            </div>
-            <h3>Aplicativo</h3>
-            <p>
-              Cliente identificado, com pontos de fidelidade, endereços salvos e
-              histórico. Pensado para uso com uma mão só.
-            </p>
-            <span class="canal__abrir">Abrir o app</span>
-          </a>
-
-          <a class="canal" href="totem/">
-            <div class="canal__moldura">
-              <div class="dispositivo dispositivo--totem">
-                <div class="tela tela--totem">
-                  <div class="tela__barra"></div>
-                  <div class="tela__cartao"><i></i><span></span></div>
-                  <div class="tela__cartao"><i></i><span></span></div>
-                  <div class="tela__acao"></div>
-                </div>
-              </div>
-            </div>
-            <h3>Totem</h3>
-            <p>
-              Operado em pé, sem teclado e sem login. Alvos grandes, sessão que
-              expira e limpa os dados do cliente anterior.
-            </p>
-            <span class="canal__abrir">Abrir o totem</span>
-          </a>
-
-          <a class="canal" href="painel/">
-            <div class="canal__moldura">
-              <div class="dispositivo dispositivo--desktop">
-                <div class="tela tela--desktop">
-                  <div class="coluna-lateral"></div>
-                  <div class="colunas-kds">
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <h3>Painel web</h3>
-            <p>
-              Cozinha e gerência. Fila de produção por status, cardápio da
-              unidade e acompanhamento das campanhas.
-            </p>
-            <span class="canal__abrir">Abrir o painel</span>
-          </a>
-        </nav>
-
-        <footer class="hub__rodape">
-          <p>
-            Protótipo acadêmico com dados fictícios. Nenhum pagamento real é
-            processado e nenhum dado pessoal é enviado a servidores.
-          </p>
-          <p><a href="#" data-abrir-privacidade>Como tratamos os dados</a></p>
-        </footer>
+  <body data-canal="web">
+    <div class="painel">
+      <header class="painel__topo">
+        <h1>Raízes do Nordeste · Painel</h1>
+        <div id="seletor"></div>
+      </header>
+      <div class="painel__interno">
+        <div class="abas" id="abas" role="tablist"></div>
+        <div id="conteudo"></div>
       </div>
-    </main>
+    </div>
+    <script type="module" src="../assets/js/painel/fila.js"></script>
   </body>
 </html>
