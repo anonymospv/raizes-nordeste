@@ -117,3 +117,11 @@ depois, uma falha de rede deixaria o pagamento sem pedido correspondente.
 
 GitHub Pages, branch `main`, pasta raiz. Sem build: o site publicado é o
 próprio repositório.
+
+## Finalidade
+
+Projeto acadêmico, sem fins lucrativos nem comerciais, serve apenas de aprendizado com a mão na massa e bastante documentação, integridade, estudo sobre LGPD e coding.
+
+Resolvi desenvolver tudo no local e depois subir a build toda para o github, então não vai exibir todos os meus comits, Mas o desenvolvimento todo levou 5 dias, contando com a documentação e o arquivo PDF para entrega da faculdade.
+
+Espero que gostem :)
