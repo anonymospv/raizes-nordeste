@@ -1,42 +1,55 @@
-# Rede Raízes do Nordeste
+# 🌵 Rede Raízes do Nordeste
 
-Protótipo funcional dos três jeitos de atender numa rede de lanchonetes
-nordestina: app, totem de autoatendimento e painel web (cozinha e gerência).
-Projeto da disciplina de Projeto Multidisciplinar — trilha Front-End.
+[![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=html5&logoColor=white)](#)
+[![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=css3&logoColor=white)](#)
+[![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black)](#)
+[![Deploy](https://img.shields.io/badge/GitHub_Pages-Active-brightgreen)](https://anonymospv.github.io/raizes-nordeste/)
 
-HTML, CSS e JavaScript puros. Sem framework, sem build, sem dependência
-nenhuma.
+> Protótipo funcional dos três canais de atendimento para uma rede de lanchonetes de culinária nordestina: **App Mobile**, **Totem de Autoatendimento** e **Painel Web (Cozinha e Gerência)**.
 
-## Como rodar
+Projeto desenvolvido para a disciplina de **Projeto Multidisciplinar (Trilha Front-End)**.
 
-O projeto usa módulos ES (`type="module"`), e o navegador bloqueia isso
-quando você abre direto pelo `file://`. Então precisa de um servidor local:
+---
+
+## 🌐 Demonstração e Acesso
+
+- 🔗 **Aplicação rodando no GitHub Pages:** [Acessar Projeto](https://anonymospv.github.io/raizes-nordeste/)
+- 📄 **Documentação Acadêmica Completa:** `docs/4569469_Projeto_Front_End_2026_V2.docx`
+
+---
+
+## 🚀 Como Executar Localmente
+
+O projeto utiliza **ES Modules** (`type="module"`). Devido às restrições de CORS do navegador em arquivos locais (`file://`), é necessário utilizar um servidor web simples.
 
 ```bash
+# Clone este repositório
+git clone [https://github.com/anonymospv/raizes-nordeste.git](https://github.com/anonymospv/raizes-nordeste.git)
+
+# Acesse a pasta do projeto
+cd raizes-nordeste
+
+# Inicie um servidor HTTP local com Python
 python3 -m http.server 8000
-# abra http://localhost:8000
-```
 
 ## Estrutura
 
-```
 .
-├── index.html              seletor de canal (porta de entrada)
-├── app/                    canal cliente, mobile-first
-├── totem/                  canal de autoatendimento
-├── painel/                 canal cozinha e gerência
+├── index.html           # Seletor de canal (Hub de entrada)
+├── app/                 # Canal Cliente (App Mobile-first)
+├── totem/               # Canal Totem de Autoatendimento
+├── painel/              # Canal Web (Cozinha e Gerência)
 └── assets/
     ├── css/
-    │   ├── tokens.css      cor, tipografia, espaçamento — a fonte única de verdade
-    │   ├── base.css        reset e componentes compartilhados
-    │   ├── lgpd.css        banner e painel de privacidade
-    │   ├── hub.css         seletor de canal
-    │   └── app.css         canal APP
+    │   ├── tokens.css   # Cores, tipografia e espaçamentos (Fonte única de verdade)
+    │   ├── base.css     # Reset CSS e componentes globais
+    │   ├── lgpd.css     # Banner e modal de privacidade
+    │   ├── hub.css      # Estilização do seletor de canal
+    │   └── app.css      # Estilizações específicas do App
     └── js/
-        ├── data/           dados mockados: unidades, cardápio, campanhas
-        ├── core/           store, formatação, consentimento LGPD
-        └── app/            telas do canal APP
-```
+        ├── data/        # Mocks: unidades, cardápios e campanhas
+        ├── core/        # Store (Observer), formatação e módulo LGPD
+        └── app/         # Lógica e navegação das telas
 
 ## Decisões técnicas
 
@@ -96,6 +109,21 @@ Implementado:
 Pensado e documentado, mas fora do escopo do protótipo por enquanto: estoque
 em tempo real, relatórios consolidados da matriz, controle de acesso por
 perfil, autenticação com senha, segmentação de campanha por perfil.
+
+🛠️ Arquitetura e Decisões Técnicas
+Valores monetários em centavos inteiros: Todo cálculo financeiro utiliza inteiros para evitar inconsistências de ponto flutuante. A formatação para R$ ocorre apenas na renderização via Intl.NumberFormat.
+
+Gerenciamento de Estado (Observer Pattern): Arquitetura sem frameworks. O estado centralizado notifica a interface sobre mudanças, garantindo o desacoplamento entre lógica e DOM.
+
+Privacidade e LGPD por design: Persistência no localStorage sujeita à autorização prévia do usuário. Dados essenciais de navegação utilizam como base legal a execução de contrato.
+
+Acessibilidade e Usabilidade:
+
+Alvos de toque de 44px no App e Painel (Diretriz WCAG 2.5.5).
+
+Alvos de toque expandidos para 72px no Totem.
+
+Sessão temporizada no Totem (60s) com higienização de dados ao encerrar.
 
 ## Fluxo de pagamento
 
